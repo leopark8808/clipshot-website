@@ -16,12 +16,15 @@ assets/           # 로고·워드마크·스크린샷·favicon·OG 이미지
 version.json      # ← 버전 단일 소스 (아래)
 ```
 
-## 버전 갱신 (단일 소스)
+## 버전 갱신
 
-푸터의 버전 표기는 `version.json` **한 곳**만 고치면 ko/en 양쪽에 자동 반영된다(각 페이지의 인라인 스크립트가 `/version.json`을 fetch). 앱이 새 버전으로 Store에 게시되면 이 파일의 `version`만 갱신.
+푸터의 버전 표기는 런타임에 `/version.json`을 fetch 해 ko/en 양쪽에 자동 반영된다(각 페이지 인라인 스크립트). 앱이 새 버전으로 Store 에 게시되면 **두 곳**을 같은 버전으로 갱신한다:
+
+1. `version.json` 의 `version` — 실제 표시 소스
+2. `index.html`·`en/index.html` 의 `<span id="appVersion">` 초기값 — 폴백(fetch 실패·첫 페인트 대비). 2026-06-06 정룡 방침으로 출시마다 함께 동기화.
 
 ```json
-{ "version": "0.1.4" }
+{ "version": "0.1.5" }
 ```
 
-> 참고: MS Store는 공개 버전 API가 없어 완전 무인 동기화는 어렵다. 단일 소스(version.json)로 "ko/en 두 곳 → 한 곳" 수동 부담을 최소화한 형태다.
+> 참고: MS Store는 공개 버전 API가 없어 완전 무인 동기화는 어렵다. 실제 표시는 `version.json` 한 곳이 구동하고, 폴백 초기값만 출시 때 함께 맞춘다.
