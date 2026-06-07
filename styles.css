@@ -110,8 +110,7 @@ section { padding: 56px 0; }
 .download .note { text-align: center; color: var(--fg-soft); font-size: 0.86rem; margin-top: 18px; }
 
 /* ── 사용 시나리오 ── */
-.usecases { display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px; margin-top: 40px; }
-@media (max-width: 860px) { .usecases { grid-template-columns: repeat(2, 1fr); gap: 30px 20px; } }
+.usecases { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 30px 22px; margin-top: 40px; }
 @media (max-width: 480px) { .usecases { grid-template-columns: 1fr; } }
 .usecase { text-align: center; }
 .usecase .uc-ico {
@@ -134,18 +133,6 @@ section { padding: 56px 0; }
 .trust-ico svg { width: 27px; height: 27px; }
 .trust-item h3 { font-size: 1.08rem; font-weight: 700; }
 .trust-item p { color: var(--fg-soft); margin-top: 6px; font-size: 0.94rem; }
-
-/* ── 스크린샷 쇼케이스 ── */
-.showcase { padding: 24px 0 56px; }
-.shots { display: flex; flex-direction: column; align-items: center; gap: 30px; margin-top: 40px; }
-.shot-frame {
-  max-width: 760px; width: 100%; margin: 0; background: var(--surface);
-  border: 1px solid var(--border); border-radius: var(--radius);
-  box-shadow: var(--shadow); overflow: hidden; padding: 10px;
-}
-.shot-frame.portrait { max-width: 480px; }
-.shot-frame img { width: 100%; height: auto; display: block; border-radius: 8px; }
-.shot-frame figcaption { text-align: center; color: var(--fg-soft); font-size: 0.92rem; padding: 14px 10px 4px; }
 
 /* ── 시스템 요구사항 · macOS 안내 ── */
 .sysreq { text-align: center; color: var(--fg-soft); font-size: 0.9rem; margin-top: 16px; }
