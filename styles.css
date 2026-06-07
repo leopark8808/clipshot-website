@@ -126,8 +126,7 @@ section { padding: 56px 0; }
 /* ── 개인정보·로컬 ── */
 #features { background: var(--surface-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 .usecases-sec { background: var(--surface-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-.trust { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 40px; }
-@media (max-width: 720px) { .trust { grid-template-columns: 1fr; } }
+.trust { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; margin-top: 40px; }
 .trust-item { text-align: center; padding: 8px 10px; }
 .trust-ico {
   width: 54px; height: 54px; border-radius: 15px; background: var(--accent-soft); color: var(--accent);
