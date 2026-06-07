@@ -53,6 +53,8 @@ header {
 .nav-right { display: flex; align-items: center; gap: 18px; font-size: 0.92rem; }
 .nav-right a { color: var(--fg-soft); transition: color 0.15s; }
 .nav-right a:hover { color: var(--fg); }
+.nav-right .nav-cta { background: var(--accent); color: var(--accent-fg); padding: 8px 16px; border-radius: 8px; font-weight: 600; }
+.nav-right .nav-cta:hover { color: var(--accent-fg); box-shadow: var(--shadow); }
 .lang-switch { color: var(--accent) !important; font-weight: 600; }
 
 /* ── 버튼 ── */
@@ -67,7 +69,7 @@ header {
 .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
 .btn-disabled { background: var(--surface-2); color: var(--fg-soft); cursor: not-allowed; border-color: var(--border); }
 .btn .sub { font-size: 0.74rem; font-weight: 500; opacity: 0.85; }
-.btn-col { flex-direction: column; align-items: flex-start; gap: 2px; line-height: 1.25; }
+.btn-col { flex-direction: column; align-items: center; gap: 2px; line-height: 1.25; }
 
 /* ── 히어로 ── */
 .hero { text-align: center; padding: 88px 0 64px; }
@@ -122,7 +124,8 @@ section { padding: 56px 0; }
 .usecase p { color: var(--fg-soft); margin-top: 6px; font-size: 0.9rem; }
 
 /* ── 개인정보·로컬 ── */
-.privacy { background: var(--surface-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+#features { background: var(--surface-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.usecases-sec { background: var(--surface-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 .trust { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 40px; }
 @media (max-width: 720px) { .trust { grid-template-columns: 1fr; } }
 .trust-item { text-align: center; padding: 8px 10px; }
