@@ -51,10 +51,11 @@ header {
 .nav-brand { display: flex; align-items: center; gap: 10px; font-weight: 700; }
 .nav-brand img { height: 26px; width: auto; display: block; }
 .nav-right { display: flex; align-items: center; gap: 18px; font-size: 0.92rem; }
-.nav-right a { color: var(--fg-soft); transition: color 0.15s; }
+.nav-right a { color: var(--fg-soft); transition: color 0.15s; white-space: nowrap; }
 .nav-right a:hover { color: var(--fg); }
 .nav-right .nav-cta { background: var(--accent); color: var(--accent-fg); padding: 8px 16px; border-radius: 8px; font-weight: 600; }
 .nav-right .nav-cta:hover { color: var(--accent-fg); box-shadow: var(--shadow); }
+@media (max-width: 640px) { .nav-right { gap: 12px; } .nav-right a:not(.nav-cta):not(.lang-switch) { display: none; } }
 .lang-switch { color: var(--accent) !important; font-weight: 600; }
 
 /* ── 버튼 ── */
