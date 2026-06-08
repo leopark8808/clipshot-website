@@ -12,7 +12,7 @@ ClipShot(화면 캡처 도구)의 공식 랜딩/마케팅 웹사이트. 앱 본�
 index.html        # 한국어 (기본)
 en/index.html     # 영어
 styles.css        # 공용 스타일
-assets/           # 로고·워드마크·스크린샷·favicon·OG 이미지
+assets/           # 로고·워드마크·favicon·OG 이미지
 version.json      # ← 버전 단일 소스 (아래)
 ```
 
@@ -24,7 +24,7 @@ version.json      # ← 버전 단일 소스 (아래)
 2. `index.html`·`en/index.html` 의 `<span id="appVersion">` 초기값 — 폴백(fetch 실패·첫 페인트 대비). 2026-06-06 정룡 방침으로 출시마다 함께 동기화.
 
 ```json
-{ "version": "0.1.5" }
+{ "version": "1.0.1" }
 ```
 
 > 참고: MS Store는 공개 버전 API가 없어 완전 무인 동기화는 어렵다. 실제 표시는 `version.json` 한 곳이 구동하고, 폴백 초기값만 출시 때 함께 맞춘다.
