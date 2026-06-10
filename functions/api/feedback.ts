@@ -4,10 +4,13 @@
 // 수신 형식(JSON, 앱 src-tauri commands/feedback.rs 와 동기):
 //   { kind: "feedback"|"panic", version, arch, locale, message?,
 //     files?: [{ name, orig_size, gzip_base64 }] }
-// 저장: R2 버킷(바인딩 이름 FEEDBACK)에 feedback/<UTC시각>_<uuid8>.json 으로 원문 보관.
+// 저장: Workers KV(바인딩 이름 FEEDBACK)에 feedback/<UTC시각>_<uuid8> 키로 원문 보관.
+// ※ R2 가 아닌 KV 인 이유: R2 는 무료 한도여도 결제수단 등록을 요구 — 정룡 "결제 안 하고
+//   싶어"(2026-06-11) → KV(무료 플랜 카드 불필요, 쓰기 1,000/일·키당 25MB)로 결정.
+//   리포트당 ~수백KB·일 수십 건 규모라 한도 여유 큼.
 //
-// ⚠ 1회 설정(대시보드): R2 버킷 생성(예: clipshot-feedback) → Pages 프로젝트
-//   Settings > Functions > R2 bucket bindings 에 변수명 FEEDBACK 으로 연결 → 재배포.
+// ⚠ 1회 설정(대시보드): Storage & databases > KV 에서 namespace 생성(예: clipshot-feedback)
+//   → Pages 프로젝트 Settings 의 KV namespace bindings 에 변수명 FEEDBACK 으로 연결 → 재배포.
 //   바인딩 없이 호출되면 500("storage not configured")을 돌려준다.
 //
 // 남용 가드: 본문 10MB 상한 + JSON 형식 검증. (개인 도구 트래픽 규모라 rate limit 은
@@ -29,7 +32,7 @@ interface FeedbackBody {
 }
 
 interface Env {
-  FEEDBACK: R2Bucket;
+  FEEDBACK: KVNamespace;
 }
 
 const MAX_BODY = 10 * 1024 * 1024; // 10MB — 로그 gzip(5MB 로테이션 원문) 대비 넉넉
@@ -57,12 +60,11 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
     return new Response("invalid payload", { status: 400 });
   }
 
-  // 키 = 도착 시각 + 무작위 8자 (정렬 가능 + 충돌 없음). 예: feedback/2026-06-11T01-23-45Z_ab12cd34.json
+  // 키 = 도착 시각 + 무작위 8자 (정렬 가능 + 충돌 없음). 예: feedback/2026-06-11T01-23-45Z_ab12cd34
   const ts = new Date().toISOString().replace(/[:.]/g, "-");
   const id = `${ts}_${crypto.randomUUID().slice(0, 8)}`;
-  await env.FEEDBACK.put(`feedback/${id}.json`, JSON.stringify(body), {
-    httpMetadata: { contentType: "application/json" },
-    customMetadata: { kind: body.kind, version: body.version },
+  await env.FEEDBACK.put(`feedback/${id}`, JSON.stringify(body), {
+    metadata: { kind: body.kind, version: body.version },
   });
   return Response.json({ ok: true, id });
 };
