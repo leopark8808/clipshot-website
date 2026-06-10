@@ -1,0 +1,3 @@
+# wrangler pages dev 로컬 상태(R2 시뮬레이션 등) — 커밋 금지
+.wrangler/
+node_modules/
