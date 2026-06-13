@@ -1,0 +1,12 @@
+{
+  "_note": "B-10 자체 업데이터 피드(tauri-plugin-updater). exe(NSIS) 채널 전용. 매 릴리스마다 version·signature·url·pub_date 를 새 빌드 값으로 교체 후 배포. signature = `pnpm tauri build` 가 생성한 `ClipShot_<ver>_x64-setup.exe.sig` 파일의 내용 전체. (이 _note 필드는 Tauri 가 무시함.)",
+  "version": "1.0.9",
+  "notes": "앱 내 자동 업데이트 기능을 추가했습니다.",
+  "pub_date": "2026-06-13T16:34:00Z",
+  "platforms": {
+    "windows-x86_64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSM25ZODQ1b0JYaHlEVEFMcVQxY29vRVhlOTBwK2hJeGErYUdnU1ZOeHQzZU84MmxTSEM3ZU0wU1VuanFFZjJlbmVKL2c0cm1ocXlkMWE4SW5INXlLYjMxZVRRczJEUmdZPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzgxMzM2MDUzCWZpbGU6Q2xpcFNob3RfMS4wLjlfeDY0LXNldHVwLmV4ZQpBOFpwNlliZStKUEZoM3gwSzNadFY2aDM3YmZweXBrTC9wUk5mUFRsbU5PRXFDRlZvOWoyT0NRWFJzVVpDTjE5RmprK3VleWtwUklTcVhFK0s0cGNEUT09Cg==",
+      "url": "https://clipshot-website.pages.dev/downloads/ClipShot_1.0.9_x64-setup.exe"
+    }
+  }
+}
