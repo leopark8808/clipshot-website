@@ -1,12 +1,12 @@
 {
   "_note": "B-10 자체 업데이터 피드(tauri-plugin-updater). exe(NSIS) 채널 전용. 매 릴리스마다 version·signature·url·pub_date 를 새 빌드 값으로 교체 후 배포. signature = `pnpm tauri build` 가 생성한 `ClipShot_<ver>_x64-setup.exe.sig` 파일의 내용 전체. (이 _note 필드는 Tauri 가 무시함.)",
-  "version": "1.1.1",
-  "notes": "업데이트 방식을 더 안전하게 개선했습니다. 업데이트는 자동 설치하지 않고 알림만 표시하며, 원하실 때 직접 설치합니다.",
-  "pub_date": "2026-06-14T09:03:30Z",
+  "version": "1.1.2",
+  "notes": "작업 표시줄·시작 메뉴 아이콘 표시를 정리하고, 종료·업데이트 시 드물게 멈추던 문제를 수정했습니다.",
+  "pub_date": "2026-06-14T14:47:46Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSM25ZODQ1b0JYaDkxRVltUGpES2loU1kxYlQweWU1SGtlYThWNG9VeWVYaGptMlNaWHBDT3JtakNEc0V6WkZDcVlzeDJqdnhhZXJaV0ZtYXhjd21hZ3VrVUhET3BNK3c0PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzgxNDI3MjAyCWZpbGU6Q2xpcFNob3RfMS4xLjFfeDY0LXNldHVwLmV4ZQpTR1R4dXVqWllPUWFCRkRCRXZ2bFNxMTV3RkN1Q3JBQkE5Mk1iWklXQi9FU0N6cTBxcUxTUVZkQXBzZzRvbXpoRVVodHNEOE5LaHMzdENIdG10ZUFDQT09Cg==",
-      "url": "https://clipshot-website.pages.dev/downloads/ClipShot_1.1.1_x64-setup.exe"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSM25ZODQ1b0JYaCtVTk1WYUdkMHJhUENpcS8xaGRXUEVSdFRubEtMQlZRbW0yZm43L1VJeXcxNWVGUjc5QXZZaW4zT0Jzb0hkSHFyYjBZUHovdWZldmlrRyttU0h3SGdjPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzgxNDQ4NDQ0CWZpbGU6Q2xpcFNob3RfMS4xLjJfeDY0LXNldHVwLmV4ZQpUVW1JeTF1SktGd1RSNjRlcmN5UlEzVzR4ZmJUOHNTT0J5ekJ5WHBXUkoxa0hDQ1dDQVJUK2toRFQ4T05pOVVZT3B5ZVhRUFprUXhsSVhtMUFuNDVBdz09Cg==",
+      "url": "https://clipshot-website.pages.dev/downloads/ClipShot_1.1.2_x64-setup.exe"
     }
   }
 }
