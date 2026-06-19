@@ -13,8 +13,11 @@
 //   → Pages 프로젝트 Settings 의 KV namespace bindings 에 변수명 FEEDBACK 으로 연결 → 재배포.
 //   바인딩 없이 호출되면 500("storage not configured")을 돌려준다.
 //
-// 남용 가드: 본문 10MB 상한 + JSON 형식 검증. (개인 도구 트래픽 규모라 rate limit 은
-// 보류 — 문제가 생기면 Cloudflare WAF rule 또는 KV 카운터 추가.)
+// 남용 가드: ① 본문 크기 2중 체크(Content-Length + 실제 text 길이 — 헤더 위조/청크 우회 차단)
+//   ② kind 화이트리스트("feedback"|"panic") + version/message/files 길이·개수 cap(임의 블롭·메타
+//   오염 차단) ③ KV expirationTtl 90일(무한 누적·스토리지 DoS 방지). 키는 서버 생성이라 키 주입 불가.
+//   ⚠ 요청 빈도 제한(rate limit)은 코드론 KV 카운터가 추가 쓰기를 유발 → Cloudflare 대시보드 WAF
+//   rate-limit 룰(/api/feedback, IP당 분당 N회)로 거는 게 정석. (보안 점검 2026-06-20)
 
 interface FeedbackFile {
   name: string;
@@ -36,34 +39,65 @@ interface Env {
 }
 
 const MAX_BODY = 10 * 1024 * 1024; // 10MB — 로그 gzip(5MB 로테이션 원문) 대비 넉넉
+const MAX_MESSAGE = 5000; // 피드백 자유 텍스트 상한(자)
+const MAX_FILES = 4; // 앱은 ClipShot.log + panic.log 2개만 보냄 — 여유 4
+const MAX_FILE_B64 = 9 * 1024 * 1024; // 파일당 gzip_base64 상한(원문 ~6.7MB)
+const TTL_SECONDS = 60 * 60 * 24 * 90; // 저장 90일 후 자동 만료(무한 누적·스토리지 DoS 방지)
 
 export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
   if (!env.FEEDBACK) {
     return new Response("storage not configured", { status: 500 });
   }
-  const len = Number(request.headers.get("content-length") ?? "0");
-  if (len > MAX_BODY) {
+  // 크기 가드 2중: ① Content-Length 헤더로 빠른 거절 ② 실제 본문 길이(헤더 위조·청크
+  //   전송으로 ①을 우회해도 차단). request.json() 대신 text() 로 받아 실측 후 파싱한다.
+  if (Number(request.headers.get("content-length") ?? "0") > MAX_BODY) {
+    return new Response("payload too large", { status: 413 });
+  }
+  const raw = await request.text();
+  if (raw.length > MAX_BODY) {
     return new Response("payload too large", { status: 413 });
   }
   let body: FeedbackBody;
   try {
-    body = await request.json<FeedbackBody>();
+    body = JSON.parse(raw);
   } catch {
     return new Response("invalid json", { status: 400 });
   }
+  // 검증: kind 화이트리스트 + version/message/files 길이·개수 cap(임의 블롭·메타 오염 차단).
   if (
+    (body?.kind !== "feedback" && body?.kind !== "panic") ||
     typeof body?.version !== "string" ||
-    typeof body?.kind !== "string" ||
-    body.version.length > 32 ||
-    (body.files && !Array.isArray(body.files))
+    body.version.length > 32
   ) {
     return new Response("invalid payload", { status: 400 });
+  }
+  if (
+    body.message !== undefined &&
+    (typeof body.message !== "string" || body.message.length > MAX_MESSAGE)
+  ) {
+    return new Response("invalid message", { status: 400 });
+  }
+  if (body.files !== undefined) {
+    if (!Array.isArray(body.files) || body.files.length > MAX_FILES) {
+      return new Response("invalid files", { status: 400 });
+    }
+    for (const f of body.files) {
+      if (
+        typeof f?.name !== "string" ||
+        f.name.length > 64 ||
+        typeof f?.gzip_base64 !== "string" ||
+        f.gzip_base64.length > MAX_FILE_B64
+      ) {
+        return new Response("invalid file", { status: 400 });
+      }
+    }
   }
 
   // 키 = 도착 시각 + 무작위 8자 (정렬 가능 + 충돌 없음). 예: feedback/2026-06-11T01-23-45Z_ab12cd34
   const ts = new Date().toISOString().replace(/[:.]/g, "-");
   const id = `${ts}_${crypto.randomUUID().slice(0, 8)}`;
   await env.FEEDBACK.put(`feedback/${id}`, JSON.stringify(body), {
+    expirationTtl: TTL_SECONDS, // 90일 후 자동 만료 — 무한 누적/스토리지 DoS 방지
     metadata: { kind: body.kind, version: body.version },
   });
   return Response.json({ ok: true, id });
