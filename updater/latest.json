@@ -1,12 +1,12 @@
 {
   "_note": "B-10 자체 업데이터 피드(tauri-plugin-updater). exe(NSIS) 채널 전용. 매 릴리스마다 version·signature·url·pub_date 를 새 빌드 값으로 교체 후 배포. signature = `pnpm tauri build` 가 생성한 `ClipShot_<ver>_x64-setup.exe.sig` 파일의 내용 전체. (이 _note 필드는 Tauri 가 무시함.)",
-  "version": "1.1.3",
-  "notes": "멀티모니터 환경에서 디스플레이 구성이 바뀔 때 앱이 갑자기 종료되던 문제를 수정했습니다.",
-  "pub_date": "2026-06-16T15:09:02Z",
+  "version": "1.1.4",
+  "notes": "텍스트 추출(OCR)이 대비가 낮은 화면도 또렷하게 인식하고, Microsoft Store 설치본에서 앱 내 업데이트 설치를 다시 지원합니다.",
+  "pub_date": "2026-06-19T23:12:41Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSM25ZODQ1b0JYaCtNYnBWeVlnSDZKSW5HaVpqbFUvU3h6RFA2Y0Q3UDJVdGRiSEhnMDBGek1TaGpOTFpHc3BrQlMzZWpFSGczeWRFRWEva3RwUEFPWDd4L0hhYmRsdUE0PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzgxNjIyNDkyCWZpbGU6Q2xpcFNob3RfMS4xLjNfeDY0LXNldHVwLmV4ZQo5OXEyV2Q1eDZKckdyT1BhVUVtRkJZbGFPQWdLWjgwMHJTMFVZVkM2L0tsbnk2SG45NkV1UDFOcnluckI0aDFaMDg1T3pwTWlIWDM3V09LcnVQZEtBZz09Cg==",
-      "url": "https://clipshot-website.pages.dev/downloads/ClipShot_1.1.3_x64-setup.exe"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSM25ZODQ1b0JYaDVjY3dHeitzMzg3QlpsR1h0TkJ6Mkd0c0VrZnFKVU1BRE9Nd1k0cmM3a0ttNXpIMDdTNTdXQSt6OThobUVnNEpqVkVYY2hIOG03czVoOUJaS25PR2dFPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzgxOTEwNjY2CWZpbGU6Q2xpcFNob3RfMS4xLjRfeDY0LXNldHVwLmV4ZQpiQ0NneC81UEYvZmlqYjU1Z2hIWHJzVUk1VHZrRVNpb2I2OUNBM0tlc2JkS0lROU04T0VCWE1rSU9oUm1JSDIvdzIyNWxqalNTVmR2SUtwRVZSZmRCUT09Cg==",
+      "url": "https://clipshot-website.pages.dev/downloads/ClipShot_1.1.4_x64-setup.exe"
     }
   }
 }
