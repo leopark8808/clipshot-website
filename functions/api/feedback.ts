@@ -16,8 +16,12 @@
 // 남용 가드: ① 본문 크기 2중 체크(Content-Length + 실제 text 길이 — 헤더 위조/청크 우회 차단)
 //   ② kind 화이트리스트("feedback"|"panic") + version/message/files 길이·개수 cap(임의 블롭·메타
 //   오염 차단) ③ KV expirationTtl 90일(무한 누적·스토리지 DoS 방지). 키는 서버 생성이라 키 주입 불가.
-//   ⚠ 요청 빈도 제한(rate limit)은 코드론 KV 카운터가 추가 쓰기를 유발 → Cloudflare 대시보드 WAF
-//   rate-limit 룰(/api/feedback, IP당 분당 N회)로 거는 게 정석. (보안 점검 2026-06-20)
+//   ⚠ 요청 빈도 제한(rate limit): 이 사이트는 커스텀 도메인 없이 *.pages.dev 단독이라 Cloudflare WAF
+//   rate-limit 룰(zone 단위)을 걸 대상이 없고, Pages Functions 는 네이티브 ratelimit 바인딩도 미지원
+//   (지원: KV/D1/R2/DO/Queues/Service 등). KV 카운터는 쓰기 증폭·부정확이라 회피. → 현 구성에선 위
+//   cap/TTL/서버생성키 기반 fail-closed 로 수용(최악도 데이터 유출 아닌 KV 쓰기한도 일시 소진·자가회복).
+//   재검토 트리거: KV 소진·피드백 스팸 관측 시 전용 rate-limit Worker(Service 바인딩)로, 또는 커스텀
+//   도메인 추가 시 WAF rate-limit. (보안 점검 2026-06-20 / 재결정: C 수용)
 
 interface FeedbackFile {
   name: string;
