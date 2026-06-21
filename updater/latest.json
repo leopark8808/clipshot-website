@@ -1,12 +1,12 @@
 {
   "_note": "B-10 자체 업데이터 피드(tauri-plugin-updater). exe(NSIS) 채널 전용. 매 릴리스마다 version·signature·url·pub_date 를 새 빌드 값으로 교체 후 배포. signature = `pnpm tauri build` 가 생성한 `ClipShot_<ver>_x64-setup.exe.sig` 파일의 내용 전체. (이 _note 필드는 Tauri 가 무시함.)",
-  "version": "1.1.4",
-  "notes": "텍스트 추출(OCR)이 대비가 낮은 화면도 또렷하게 인식하고, Microsoft Store 설치본에서 앱 내 업데이트 설치를 다시 지원합니다.",
-  "pub_date": "2026-06-19T23:12:41Z",
+  "version": "1.1.5",
+  "notes": "듀얼 모니터에서 '화면 전체' 캡처가 가끔 되지 않던 문제와, 동영상 녹화 시 소리가 영상보다 빠르게 들어가 어긋나던 문제를 수정했습니다.",
+  "pub_date": "2026-06-21T10:59:57Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSM25ZODQ1b0JYaDVjY3dHeitzMzg3QlpsR1h0TkJ6Mkd0c0VrZnFKVU1BRE9Nd1k0cmM3a0ttNXpIMDdTNTdXQSt6OThobUVnNEpqVkVYY2hIOG03czVoOUJaS25PR2dFPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzgxOTEwNjY2CWZpbGU6Q2xpcFNob3RfMS4xLjRfeDY0LXNldHVwLmV4ZQpiQ0NneC81UEYvZmlqYjU1Z2hIWHJzVUk1VHZrRVNpb2I2OUNBM0tlc2JkS0lROU04T0VCWE1rSU9oUm1JSDIvdzIyNWxqalNTVmR2SUtwRVZSZmRCUT09Cg==",
-      "url": "https://clipshot-website.pages.dev/downloads/ClipShot_1.1.4_x64-setup.exe"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSM25ZODQ1b0JYaDJ4UGhCU3pSSDdxUHhrTjRIeDVRajJzeUJDZ3A3ZG42bjMrR2ZBdk9yM3poS1FaclphNFNhdGZ4SHlFcWg3QytIOThVYXovRmdGUWJOdi9QNTROVkFFPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzgyMDM5NzIzCWZpbGU6Q2xpcFNob3RfMS4xLjVfeDY0LXNldHVwLmV4ZQo1LzFIeTIxSnc5SEVxby9nMkxxTUJXZU9sWCtvZmd6NVFBd0EwK3hCNTdCNS9YVEhGZm9IZGE0MGRLKzRSTS9leUxVZElQb1VaMEQ1eUZwZXVOZ3lDUT09Cg==",
+      "url": "https://clipshot-website.pages.dev/downloads/ClipShot_1.1.5_x64-setup.exe"
     }
   }
 }
