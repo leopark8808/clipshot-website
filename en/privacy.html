@@ -40,11 +40,11 @@
       <li><strong>No account, no login</strong> — install and start using it right away, with no sign-up.</li>
       <li><strong>Stored locally</strong> — captured images, recorded videos/GIFs, the library, and OCR results are all stored only on your PC and are never automatically sent to any server.</li>
       <li><strong>No ads, no tracking</strong> — the App does not serve ads or perform user tracking or behavioral analytics.</li>
-      <li><strong>No automatic collection</strong> — diagnostic information is sent only when you choose to send it.</li>
+      <li><strong>No automatic transmission</strong> — diagnostic information leaves your device only when you explicitly agree to send it.</li>
     </ul>
 
     <h2>2. Information stored on your device (local)</h2>
-    <p>The App stores the following information inside your device (the Windows app data folder).</p>
+    <p>The App may store the following information inside your device, either in the app data folder or in a save location you choose (e.g. your Pictures folder or a folder you select yourself).</p>
     <ul>
       <li>Captured images, recorded videos and GIFs</li>
       <li>Library information — capture title, creation date and time, type (image / video / GIF), the name of the app that was active at capture time, and text extracted from images (OCR, used for content search)</li>
@@ -59,7 +59,7 @@
     </ul>
 
     <h2>4. Diagnostic & feedback information (only when you send it)</h2>
-    <p>To help fix issues and improve the App, you may send diagnostic information — but only when you choose to. The App does not collect or transmit diagnostic information automatically.</p>
+    <p>To help fix issues and improve the App, you may send diagnostic information — but only when you choose to. The App does not transmit diagnostic information externally on its own. The App may create log files on your device (<code>ClipShot.log</code>, <code>panic.log</code>) to help diagnose errors, but these logs never leave your device unless you explicitly agree to send them.</p>
     <p>There are two ways it can be sent:</p>
     <ul>
       <li>From Settings &gt; About &gt; <strong>"Send Feedback"</strong>, where you can attach an optional message and optional diagnostic logs.</li>
@@ -76,8 +76,9 @@
       Your captured images, videos, and library contents are not included in diagnostic information.
     </p>
     <p>
-      <strong>Transmission & retention:</strong> the diagnostic information you send, as described above, is transmitted over HTTPS (encrypted in transit) and stored in Cloudflare (Workers KV).
-      This submission stored on the server is <strong>automatically deleted 90 days</strong> after it is stored. (This automatic deletion applies only to the diagnostic submissions held on the server — it has nothing to do with the captures, recordings, and library stored on your own PC.)
+      <strong>Transmission & retention:</strong> the diagnostic information you send, as described above, is transmitted over HTTPS (encrypted in transit) and stored in Cloudflare Workers KV.
+      By the nature of Workers KV, the data may be stored in Cloudflare's central store and cached across Cloudflare's global network of data centers.
+      This submission stored on the server is <strong>automatically deleted 90 days</strong> after it is stored, via the Workers KV expiration feature. (This automatic deletion applies only to the diagnostic submissions held on the server — it has nothing to do with the captures, recordings, and library stored on your own PC.)
     </p>
     <p>
       Submitted diagnostic information is used solely to diagnose errors and improve the App, and is never used for advertising, profiling, or sale to third parties.
@@ -96,14 +97,19 @@
       <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener">Microsoft's Privacy Statement</a> applies to those.
     </p>
 
-    <h2>7. Sharing with third parties</h2>
+    <h2>7. Sharing with third parties &amp; processing entrustment</h2>
     <p>The App does not provide, sell, or share your captures, recordings, or library data with any third party.</p>
-    <p>Diagnostic information you send yourself (section 4) is not provided to any third party other than the cloud infrastructure used to operate the App (Cloudflare).</p>
+    <p>However, to store and operate the diagnostic information you send yourself (section 4), the App entrusts processing to the following infrastructure provider:</p>
+    <ul>
+      <li>Processor: Cloudflare, Inc.</li>
+      <li>Entrusted work: transmitting and storing diagnostic information (Workers KV) and handling automatic expiry (90 days)</li>
+    </ul>
+    <p>Diagnostic information is not provided to any third party beyond this entrusted purpose.</p>
 
     <h2>8. Data deletion</h2>
     <ul>
       <li>Deleting an individual capture from the library removes that file and its library information from your device.</li>
-      <li>Uninstalling the App deletes or cleans up the app data stored on your device according to how Windows manages app data.</li>
+      <li>Uninstalling the App may delete or clean up the settings and library data stored in the app data folder, according to how Windows manages app data. However, capture files you saved yourself, or files in a save folder you specified, may remain after uninstalling and can be deleted by you.</li>
     </ul>
 
     <h2>9. Children's privacy</h2>
