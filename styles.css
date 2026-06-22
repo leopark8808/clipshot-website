@@ -154,6 +154,32 @@ section { padding: 56px 0; }
   border-radius: 10px; padding: 10px 16px;
 }
 
+/* ── 문서 페이지(개인정보 처리방침 등) ── */
+.doc { max-width: 760px; margin: 0 auto; padding: 56px 24px 80px; }
+.doc h1 { font-size: clamp(1.7rem, 4vw, 2.2rem); font-weight: 800; letter-spacing: -0.01em; }
+.doc .updated { color: var(--fg-soft); font-size: 0.9rem; margin-top: 6px; }
+.doc .intro { color: var(--fg-soft); margin-top: 18px; font-size: 1rem; }
+.doc h2 { font-size: 1.2rem; font-weight: 700; margin: 36px 0 10px; }
+.doc h3 { font-size: 1.02rem; font-weight: 700; margin: 22px 0 6px; }
+.doc p, .doc li { color: var(--fg-soft); font-size: 0.96rem; }
+.doc p { margin-top: 8px; }
+.doc ul { padding-left: 22px; margin: 10px 0; }
+.doc li { margin: 6px 0; }
+.doc a { color: var(--accent); }
+.doc a:hover { text-decoration: underline; }
+.doc strong { color: var(--fg); font-weight: 600; }
+.doc code {
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-size: 0.86em;
+  background: var(--surface-2); border: 1px solid var(--border); border-radius: 6px; padding: 1px 6px;
+}
+.doc .callout {
+  background: var(--accent-soft); border: 1px solid var(--accent); border-radius: var(--radius);
+  padding: 16px 18px; margin: 16px 0;
+}
+.doc .callout p { margin-top: 0; }
+.doc .callout p + p { margin-top: 8px; }
+.doc .callout .en { font-style: italic; font-size: 0.88rem; }
+
 /* ── 푸터 ── */
 footer { padding: 40px 0; color: var(--fg-soft); font-size: 0.88rem; }
 .foot { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
