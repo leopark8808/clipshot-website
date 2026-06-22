@@ -76,8 +76,11 @@
       Your captured images, videos, and library contents are not included in diagnostic information.
     </p>
     <p>
-      Submitted diagnostic information is stored in Cloudflare storage (R2) and is used solely to diagnose errors and improve the App.
-      It is not used for advertising, profiling, or sale to third parties.
+      <strong>Transmission & retention:</strong> diagnostic information is transmitted over HTTPS (encrypted in transit) and stored in Cloudflare (Workers KV).
+      It is <strong>automatically deleted 90 days</strong> after it is stored.
+    </p>
+    <p>
+      Submitted diagnostic information is used solely to diagnose errors and improve the App, and is never used for advertising, profiling, or sale to third parties.
     </p>
 
     <h2>5. Update checks</h2>
