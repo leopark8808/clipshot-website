@@ -1,12 +1,12 @@
 {
   "_note": "B-10 자체 업데이터 피드(tauri-plugin-updater). exe(NSIS) 채널 전용. 매 릴리스마다 version·signature·url·pub_date 를 새 빌드 값으로 교체 후 배포. signature = `pnpm tauri build` 가 생성한 `ClipShot_<ver>_x64-setup.exe.sig` 파일의 내용 전체. (이 _note 필드는 Tauri 가 무시함.)",
-  "version": "1.1.6",
-  "notes": "모니터를 껐다 켠 직후 첫 캡처 미리보기가 찌그러져 보이던 문제를 수정하고, 작업표시줄 아이콘·앱 내 업데이트 화면·편집 창 스크롤바를 개선했습니다.",
-  "pub_date": "2026-06-21T18:07:35Z",
+  "version": "1.1.7",
+  "notes": "앱 아이콘을 새로운 디자인으로 단장하고, 업데이트 직후 드물게 표시되던 '비정상 종료' 오류 알림을 수정했습니다.",
+  "pub_date": "2026-06-22T13:42:50Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSM25ZODQ1b0JYaC82VURnckdOeWM1N21BL001SituMDkvcWZtYm1nK05XTXhFOEtERjQ5L3U5UWU0OFJzSTJ2bUt0MHhTb3JwaCtKSUJ0cElGVzFlTTczUkh5cHZaM1FNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzgyMDY1MjMwCWZpbGU6Q2xpcFNob3RfMS4xLjZfeDY0LXNldHVwLmV4ZQo2TlZxdG5VVk9DR1lpYmZ0eVR3VzBZVTVyRWxBUitSaDJYQ2p2OStXSkhiMWRiUlhSdHEzbGRBUzlJL2tUOHdkOUtWVDd2TXBVTlp2c3BTeGdvM0xCUT09Cg==",
-      "url": "https://clipshot-website.pages.dev/downloads/ClipShot_1.1.6_x64-setup.exe"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSM25ZODQ1b0JYaDJFTDFPU0RkK2FXTnlTSFh2aTE5UHFJMng3aWRHOWFoT0xIdDlhT3kydFRVVWszaGljQUg0VkdZVGk0QTdObk5RdGp4eHZueE4reDJZQk5PYS9zU1E0PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzgyMTM1NzUzCWZpbGU6Q2xpcFNob3RfMS4xLjdfeDY0LXNldHVwLmV4ZQoxQlFXUzVHM29YVVU1Ni9WZDFETndUai9wUWNhOXRpZUwwWUlRMWh4aDdBaDd4d2VaRFkzbjRPeUJma2pjRkJhV20zTVppRzRnbE5SWk9RbjY2YitDdz09Cg==",
+      "url": "https://clipshot-website.pages.dev/downloads/ClipShot_1.1.7_x64-setup.exe"
     }
   }
 }
