@@ -48,27 +48,6 @@ const MAX_FILES = 4; // 앱은 ClipShot.log + panic.log 2개만 보냄 — 여�
 const MAX_FILE_B64 = 9 * 1024 * 1024; // 파일당 gzip_base64 상한(원문 ~6.7MB)
 const TTL_SECONDS = 60 * 60 * 24 * 90; // 저장 90일 후 자동 만료(무한 누적·스토리지 DoS 방지)
 
-// ⚠ 임시 진단 핸들러(바인딩 불일치 추적용) — 검증 후 제거 예정.
-//   GET /api/feedback?diag=clipdiag2026 → 런타임 env.FEEDBACK 이 실제로 보는 키 목록을 반환.
-//   대시보드는 FEEDBACK→clipshot-feedback(4cdb…)인데 wrangler 로 읽으면 비어 있어,
-//   런타임 바인딩이 어떤 네임스페이스를 가리키는지 같은 바인딩으로 직접 확인한다.
-export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
-  const url = new URL(request.url);
-  if (url.searchParams.get("diag") !== "clipdiag2026") {
-    return new Response("not found", { status: 404 });
-  }
-  if (!env.FEEDBACK) {
-    return Response.json({ bound: false });
-  }
-  const list = await env.FEEDBACK.list({ limit: 50 });
-  return Response.json({
-    bound: true,
-    list_complete: list.list_complete,
-    count: list.keys.length,
-    keys: list.keys.map((k) => ({ name: k.name, metadata: k.metadata })),
-  });
-};
-
 export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
   if (!env.FEEDBACK) {
     return new Response("storage not configured", { status: 500 });
