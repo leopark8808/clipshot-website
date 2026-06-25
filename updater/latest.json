@@ -1,12 +1,12 @@
 {
   "_note": "B-10 자체 업데이터 피드(tauri-plugin-updater). exe(NSIS) 채널 전용. 매 릴리스마다 version·signature·url·pub_date 를 새 빌드 값으로 교체 후 배포. signature = `pnpm tauri build` 가 생성한 `ClipShot_<ver>_x64-setup.exe.sig` 파일의 내용 전체. (이 _note 필드는 Tauri 가 무시함.)",
-  "version": "1.1.8",
-  "notes": "업데이트 직후 드물게 다시 표시되던 '비정상 종료' 오류 알림을 수정했습니다.",
-  "pub_date": "2026-06-22T14:01:59Z",
+  "version": "1.2.0",
+  "notes": "저장 시 바로 저장 옵션 추가, 동영상 녹화 소리 끊김 개선, 모니터 전환 후 메인 창이 작아지던 문제 수정 등.",
+  "pub_date": "2026-06-25T16:56:38Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSM25ZODQ1b0JYaHozQ2kya3hCeHhUeFU5a3hIdXhCakRrcXMvRGVYRkVycG04eHkxMTF3ZVpNcDdmQWp2bThMSzNTVmRZOGJLWDBvUzN2c0FuVGxBTFhoTS9iYWhEZlE0PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzgyMTM2ODIxCWZpbGU6Q2xpcFNob3RfMS4xLjhfeDY0LXNldHVwLmV4ZQoyVGlBNTE4VWY4Qk5IOUVWK1VhMUEwb3g5cmxJMC9kYlZZRWtadTFYMjFOejQxS1Y0QmRicGVtQXRhcE1FZEg1NHl3UG1TWGo3RnRES0VwRGF1R1RDdz09Cg==",
-      "url": "https://clipshot-website.pages.dev/downloads/ClipShot_1.1.8_x64-setup.exe"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSM25ZODQ1b0JYaDZrVlhMbnBSU055TUU5cVlCV2VvTmNyMjJhcjRwQTc1ME41S1p0ZUw4L01OYzMxUTNML1J2aStRSFZQR0t6b1NnbUgxcEJIcDI1Z3czTU1LOXJnTUFJPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzgyNDA2NTk4CWZpbGU6Q2xpcFNob3RfMS4yLjBfeDY0LXNldHVwLmV4ZQpTRUp0ejQvSU5VcWNidCtCdUlWRHRXdlE5bHJrUWovZGtDMDJCdnVGa1cvQXRnSzZ0d0lUaURtSEFPa2NURVZEaWw5WlB3SytOOVl6akFjT2xtNllCQT09Cg==",
+      "url": "https://clipshot-website.pages.dev/downloads/ClipShot_1.2.0_x64-setup.exe"
     }
   }
 }
