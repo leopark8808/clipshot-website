@@ -61,7 +61,7 @@
               <span class="sub">Apple Silicon · Free</span>
             </a>
           </div>
-          <p class="meta">Unsigned beta · one Terminal command to install (see below) · macOS 14+ · Apple Silicon</p>
+          <p class="meta">Unsigned beta · one Terminal command to install (<a href="#mac-guide">install guide ↓</a>) · macOS 14+ · Apple Silicon</p>
         </div>
       </div>
     </section>
@@ -264,12 +264,11 @@
               <span class="sub">Apple Silicon · Free</span>
             </a>
           </div>
-          <div class="mac-guide">
-            <p class="note"><strong>Unsigned beta</strong> — on first launch macOS shows <strong>"is damaged and can't be opened"</strong>. The app is fine; it's just not Apple-notarized yet. Clear it once with these steps:</p>
+          <div class="mac-guide" id="mac-guide">
+            <p class="note"><strong>Unsigned beta</strong> — double-clicking shows <strong>"is damaged and can't be opened"</strong>. The app is fine; it's just not Apple-notarized yet. Just <strong>2 steps</strong>:</p>
             <ol class="mac-steps">
               <li>Open <code>ClipShot_1.3.0_aarch64.dmg</code> and <strong>drag ClipShot to "Applications"</strong>.</li>
-              <li>Launch it; when the "damaged" warning appears, click <strong>Cancel</strong>.</li>
-              <li>Open <strong>Terminal</strong> (Spotlight <kbd>⌘ Space</kbd> → "Terminal") and paste this one line:</li>
+              <li>In <strong>Terminal</strong> (Spotlight <kbd>⌘ Space</kbd> → "Terminal"), paste this one line:</li>
             </ol>
             <code class="cmd">xattr -dr com.apple.quarantine "/Applications/ClipShot.app"</code>
             <p class="note">Now <strong>double-click ClipShot in Applications</strong> — it opens normally. Grant <strong>Screen Recording</strong> permission once on your first capture.</p>

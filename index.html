@@ -61,7 +61,7 @@
               <span class="sub">Apple Silicon · 무료</span>
             </a>
           </div>
-          <p class="meta">미공증 베타 · 설치에 터미널 1줄 필요(아래 안내) · macOS 14+ · Apple Silicon</p>
+          <p class="meta">미공증 베타 · 설치에 터미널 1줄 필요(<a href="#mac-guide">설치 안내 ↓</a>) · macOS 14+ · Apple Silicon</p>
         </div>
       </div>
     </section>
@@ -263,15 +263,14 @@
               <span class="sub">Apple Silicon · 무료</span>
             </a>
           </div>
-          <div class="mac-guide">
-            <p class="note"><strong>지인 베타 (미공증)</strong> — 첫 실행 때 <strong>“손상되었기 때문에 열 수 없습니다”</strong> 경고가 떠요. 앱이 망가진 게 아니라 Apple 공증 전이라 macOS가 막는 거예요. 아래대로 한 번만 풀어주면 됩니다:</p>
+          <div class="mac-guide" id="mac-guide">
+            <p class="note"><strong>지인 베타 (미공증)</strong> — 더블클릭하면 <strong>“손상되었기 때문에 열 수 없습니다”</strong> 가 떠요. 앱이 망가진 게 아니라 Apple 공증 전이라 막히는 거예요. 아래 <strong>2단계</strong>면 됩니다:</p>
             <ol class="mac-steps">
-              <li>받은 <code>ClipShot_1.3.0_aarch64.dmg</code>를 열고 <strong>ClipShot을 “응용 프로그램”으로 드래그</strong>.</li>
-              <li>실행해서 “손상됨” 경고가 뜨면 <strong>취소</strong>.</li>
-              <li><strong>터미널</strong>(Spotlight <kbd>⌘ Space</kbd> → “터미널”)을 열고 아래 한 줄을 붙여넣어 실행:</li>
+              <li>받은 <code>ClipShot_1.3.0_aarch64.dmg</code> 를 열고 <strong>ClipShot 을 “응용 프로그램”으로 드래그</strong>.</li>
+              <li><strong>터미널</strong>(Spotlight <kbd>⌘ Space</kbd> → “터미널”)에 아래 한 줄을 붙여넣어 실행:</li>
             </ol>
             <code class="cmd">xattr -dr com.apple.quarantine "/Applications/ClipShot.app"</code>
-            <p class="note">이제 <strong>응용 프로그램에서 ClipShot 더블클릭</strong> → 정상 실행돼요. 첫 캡처 때 <strong>화면 기록 권한</strong> 한 번만 허용하면 끝.</p>
+            <p class="note">이제 <strong>응용 프로그램에서 ClipShot 더블클릭</strong> → 정상 실행. 첫 캡처 때 <strong>화면 기록 권한</strong> 한 번 허용하면 끝.</p>
           </div>
           <p class="sysreq">macOS 14 (Sonoma) 이상 · Apple Silicon (M1 이상)</p>
           <button type="button" class="os-switch" data-os="windows">Windows용 다운로드 →</button>
