@@ -226,35 +226,63 @@
     <section id="download" class="download">
       <div class="wrap">
         <h2 class="section-title">지금 ClipShot을 시작해보세요</h2>
-        <p class="section-sub">Windows 10/11에서 바로 설치할 수 있습니다.</p>
-        <div class="cta">
-          <a class="btn btn-primary btn-col" href="https://apps.microsoft.com/detail/9PPDRC62BRP4?hl=ko-kr&amp;gl=KR" target="_blank" rel="noopener">
-            <span>Microsoft Store에서 받기</span>
-            <span class="sub">안전 · 무료</span>
-          </a>
-          <a class="btn btn-secondary btn-col" href="/downloads/ClipShot_1.3.0_x64-setup.exe" download>
-            <span>직접 다운로드 (.exe)</span>
-            <span class="sub">계정 없이 설치</span>
-          </a>
+        <p class="section-sub" id="dlSub">Windows 10/11에서 바로 설치할 수 있습니다.</p>
+
+        <!-- Windows -->
+        <div class="os-block" id="dl-windows">
+          <div class="cta">
+            <a class="btn btn-primary btn-col" href="https://apps.microsoft.com/detail/9PPDRC62BRP4?hl=ko-kr&amp;gl=KR" target="_blank" rel="noopener">
+              <span>Microsoft Store에서 받기</span>
+              <span class="sub">안전 · 무료</span>
+            </a>
+            <a class="btn btn-secondary btn-col" href="/downloads/ClipShot_1.3.0_x64-setup.exe" download>
+              <span>직접 다운로드 (.exe)</span>
+              <span class="sub">계정 없이 설치</span>
+            </a>
+          </div>
+          <p class="note">직접 다운로드(.exe) 실행 시 Windows 경고가 나오면 <strong>추가 정보 → 실행</strong>을 눌러주세요. Microsoft Store로 설치하면 경고가 없습니다.</p>
+          <p class="sysreq">Windows 10 (1809) 이상 · 64비트</p>
+          <button type="button" class="os-switch" data-os="mac">macOS용 다운로드 →</button>
         </div>
-        <p class="note">직접 다운로드(.exe) 실행 시 Windows 경고가 나오면 <strong>추가 정보 → 실행</strong>을 눌러주세요. Microsoft Store로 설치하면 경고가 없습니다.</p>
-        <p class="sysreq">Windows 10 (1809) 이상 · 64비트</p>
-        <div class="mac-tease-wrap">
-          <span class="mac-tease"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>macOS 지원은 검토 중입니다.</span>
+        <!-- macOS (베타) -->
+        <div class="os-block" id="dl-mac" hidden>
+          <div class="cta">
+            <a class="btn btn-primary btn-col" href="/downloads/ClipShot_1.3.0_aarch64.dmg" download>
+              <span>macOS 다운로드 (.dmg) <span class="beta-tag">베타</span></span>
+              <span class="sub">Apple Silicon · 무료</span>
+            </a>
+          </div>
+          <p class="note">처음 열 때 “확인되지 않은 개발자” 경고가 나오면 <strong>ClipShot 우클릭 → 열기</strong>를 눌러주세요. (macOS 15는 <strong>시스템 설정 → 개인정보 보호 및 보안</strong>에서 “그래도 열기”) 한 번만 하면 됩니다.</p>
+          <p class="sysreq">macOS 14 (Sonoma) 이상 · Apple Silicon (M1 이상)</p>
+          <button type="button" class="os-switch" data-os="windows">Windows용 다운로드 →</button>
         </div>
-        <p class="os-note" id="osNote" hidden>현재 ClipShot은 <strong>Windows 10/11 전용</strong>입니다. macOS 지원은 검토 중입니다.</p>
       </div>
     </section>
   </main>
 
   <script>
-    // 비-Windows 방문자에게 Windows 전용 안내 표시(OS 감지). 다운로드 자체는 그대로 노출.
+    // 방문자 OS 감지 → 해당 플랫폼 다운로드를 기본 노출(다른 OS는 전환 버튼으로 접근).
     (function () {
       var ua = navigator.userAgent || '';
-      var isWindows = /Windows|Win64|Win32|WOW64/i.test(ua);
-      if (!isWindows) {
-        var n = document.getElementById('osNote');
-        if (n) n.hidden = false;
+      var isMac = /Mac/i.test(ua) && !/iPhone|iPad|iPod/i.test(ua);
+      var win = document.getElementById('dl-windows');
+      var mac = document.getElementById('dl-mac');
+      var sub = document.getElementById('dlSub');
+      function show(os) {
+        var onMac = os === 'mac';
+        if (win) win.hidden = onMac;
+        if (mac) mac.hidden = !onMac;
+        if (sub) sub.textContent = onMac
+          ? 'macOS 14 이상 · Apple Silicon에서 바로 설치할 수 있습니다.'
+          : 'Windows 10/11에서 바로 설치할 수 있습니다.';
+      }
+      show(isMac ? 'mac' : 'windows');
+      var btns = document.querySelectorAll('.os-switch');
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener('click', function () {
+          show(this.getAttribute('data-os'));
+          document.getElementById('download').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
       }
     })();
   </script>
