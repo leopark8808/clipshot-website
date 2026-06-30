@@ -45,13 +45,24 @@
         </picture>
         <h1><span class="accent">캡처</span>는 시작일 뿐입니다.</h1>
         <p class="lead">화면을 캡처하고, 바로 편집하고, 보관함에서 다시 찾으세요.</p>
-        <div class="cta">
-          <a class="btn btn-primary btn-col" href="https://apps.microsoft.com/detail/9PPDRC62BRP4?hl=ko-kr&amp;gl=KR" target="_blank" rel="noopener">
-            <span>Microsoft Store에서 받기</span>
-            <span class="sub">안전 · 무료</span>
-          </a>
+        <div class="os-win">
+          <div class="cta">
+            <a class="btn btn-primary btn-col" href="https://apps.microsoft.com/detail/9PPDRC62BRP4?hl=ko-kr&amp;gl=KR" target="_blank" rel="noopener">
+              <span>Microsoft Store에서 받기</span>
+              <span class="sub">안전 · 무료</span>
+            </a>
+          </div>
+          <p class="meta">Microsoft Store에서 안전하게 설치 · 자동 업데이트</p>
         </div>
-        <p class="meta">Microsoft Store에서 안전하게 설치 · 자동 업데이트</p>
+        <div class="os-mac" hidden>
+          <div class="cta">
+            <a class="btn btn-primary btn-col" href="/downloads/ClipShot_1.3.0_aarch64.dmg" download>
+              <span>macOS 다운로드 (.dmg) <span class="beta-tag">베타</span></span>
+              <span class="sub">Apple Silicon · 무료</span>
+            </a>
+          </div>
+          <p class="meta">미공증 베타 · 설치에 터미널 1줄 필요(아래 안내) · macOS 14+ · Apple Silicon</p>
+        </div>
       </div>
     </section>
 
@@ -226,35 +237,74 @@
     <section id="download" class="download">
       <div class="wrap">
         <h2 class="section-title">지금 ClipShot을 시작해보세요</h2>
-        <p class="section-sub">Windows 10/11에서 바로 설치할 수 있습니다.</p>
-        <div class="cta">
-          <a class="btn btn-primary btn-col" href="https://apps.microsoft.com/detail/9PPDRC62BRP4?hl=ko-kr&amp;gl=KR" target="_blank" rel="noopener">
-            <span>Microsoft Store에서 받기</span>
-            <span class="sub">안전 · 무료</span>
-          </a>
-          <a class="btn btn-secondary btn-col" href="/downloads/ClipShot_1.3.0_x64-setup.exe" download>
-            <span>직접 다운로드 (.exe)</span>
-            <span class="sub">계정 없이 설치</span>
-          </a>
+        <p class="section-sub" id="dlSub">Windows 10/11에서 바로 설치할 수 있습니다.</p>
+
+        <!-- Windows -->
+        <div class="os-block os-win" id="dl-windows">
+          <div class="cta">
+            <a class="btn btn-primary btn-col" href="https://apps.microsoft.com/detail/9PPDRC62BRP4?hl=ko-kr&amp;gl=KR" target="_blank" rel="noopener">
+              <span>Microsoft Store에서 받기</span>
+              <span class="sub">안전 · 무료</span>
+            </a>
+            <a class="btn btn-secondary btn-col" href="/downloads/ClipShot_1.3.0_x64-setup.exe" download>
+              <span>직접 다운로드 (.exe)</span>
+              <span class="sub">계정 없이 설치</span>
+            </a>
+          </div>
+          <p class="note">직접 다운로드(.exe) 실행 시 Windows 경고가 나오면 <strong>추가 정보 → 실행</strong>을 눌러주세요. Microsoft Store로 설치하면 경고가 없습니다.</p>
+          <p class="sysreq">Windows 10 (1809) 이상 · 64비트</p>
+          <button type="button" class="os-switch" data-os="mac">macOS용 다운로드 →</button>
         </div>
-        <p class="note">직접 다운로드(.exe) 실행 시 Windows 경고가 나오면 <strong>추가 정보 → 실행</strong>을 눌러주세요. Microsoft Store로 설치하면 경고가 없습니다.</p>
-        <p class="sysreq">Windows 10 (1809) 이상 · 64비트</p>
-        <div class="mac-tease-wrap">
-          <span class="mac-tease"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>macOS 지원은 검토 중입니다.</span>
+        <!-- macOS (베타) -->
+        <div class="os-block os-mac" id="dl-mac" hidden>
+          <div class="cta">
+            <a class="btn btn-primary btn-col" href="/downloads/ClipShot_1.3.0_aarch64.dmg" download>
+              <span>macOS 다운로드 (.dmg) <span class="beta-tag">베타</span></span>
+              <span class="sub">Apple Silicon · 무료</span>
+            </a>
+          </div>
+          <div class="mac-guide">
+            <p class="note"><strong>지인 베타 (미공증)</strong> — 첫 실행 때 <strong>“손상되었기 때문에 열 수 없습니다”</strong> 경고가 떠요. 앱이 망가진 게 아니라 Apple 공증 전이라 macOS가 막는 거예요. 아래대로 한 번만 풀어주면 됩니다:</p>
+            <ol class="mac-steps">
+              <li>받은 <code>ClipShot_1.3.0_aarch64.dmg</code>를 열고 <strong>ClipShot을 “응용 프로그램”으로 드래그</strong>.</li>
+              <li>실행해서 “손상됨” 경고가 뜨면 <strong>취소</strong>.</li>
+              <li><strong>터미널</strong>(Spotlight <kbd>⌘ Space</kbd> → “터미널”)을 열고 아래 한 줄을 붙여넣어 실행:</li>
+            </ol>
+            <code class="cmd">xattr -dr com.apple.quarantine "/Applications/ClipShot.app"</code>
+            <p class="note">이제 <strong>응용 프로그램에서 ClipShot 더블클릭</strong> → 정상 실행돼요. 첫 캡처 때 <strong>화면 기록 권한</strong> 한 번만 허용하면 끝.</p>
+          </div>
+          <p class="sysreq">macOS 14 (Sonoma) 이상 · Apple Silicon (M1 이상)</p>
+          <button type="button" class="os-switch" data-os="windows">Windows용 다운로드 →</button>
         </div>
-        <p class="os-note" id="osNote" hidden>현재 ClipShot은 <strong>Windows 10/11 전용</strong>입니다. macOS 지원은 검토 중입니다.</p>
       </div>
     </section>
   </main>
 
   <script>
-    // 비-Windows 방문자에게 Windows 전용 안내 표시(OS 감지). 다운로드 자체는 그대로 노출.
+    // 방문자 OS 감지 → 해당 플랫폼(히어로 + 다운로드) 노출, 반대 OS는 전환 버튼으로 접근.
     (function () {
       var ua = navigator.userAgent || '';
-      var isWindows = /Windows|Win64|Win32|WOW64/i.test(ua);
-      if (!isWindows) {
-        var n = document.getElementById('osNote');
-        if (n) n.hidden = false;
+      var isMac = /Mac/i.test(ua) && !/iPhone|iPad|iPod/i.test(ua);
+      var sub = document.getElementById('dlSub');
+      function toggle(sel, on) {
+        var els = document.querySelectorAll(sel);
+        for (var i = 0; i < els.length; i++) els[i].hidden = !on;
+      }
+      function show(os) {
+        var onMac = os === 'mac';
+        toggle('.os-win', !onMac);
+        toggle('.os-mac', onMac);
+        if (sub) sub.textContent = onMac
+          ? 'macOS 14 이상 · Apple Silicon에서 바로 설치할 수 있습니다.'
+          : 'Windows 10/11에서 바로 설치할 수 있습니다.';
+      }
+      show(isMac ? 'mac' : 'windows');
+      var btns = document.querySelectorAll('.os-switch');
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener('click', function () {
+          show(this.getAttribute('data-os'));
+          document.getElementById('download').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
       }
     })();
   </script>

@@ -45,13 +45,24 @@
         </picture>
         <h1><span class="accent">Capture</span> is just the beginning.</h1>
         <p class="lead">Capture your screen, edit on the spot, and find it again in your library.</p>
-        <div class="cta">
-          <a class="btn btn-primary btn-col" href="https://apps.microsoft.com/detail/9PPDRC62BRP4?hl=en-us&amp;gl=US" target="_blank" rel="noopener">
-            <span>Get it from Microsoft Store</span>
-            <span class="sub">Safe · Free</span>
-          </a>
+        <div class="os-win">
+          <div class="cta">
+            <a class="btn btn-primary btn-col" href="https://apps.microsoft.com/detail/9PPDRC62BRP4?hl=en-us&amp;gl=US" target="_blank" rel="noopener">
+              <span>Get it from Microsoft Store</span>
+              <span class="sub">Safe · Free</span>
+            </a>
+          </div>
+          <p class="meta">Safely install from Microsoft Store · Automatic updates</p>
         </div>
-        <p class="meta">Safely install from Microsoft Store · Automatic updates</p>
+        <div class="os-mac" hidden>
+          <div class="cta">
+            <a class="btn btn-primary btn-col" href="/downloads/ClipShot_1.3.0_aarch64.dmg" download>
+              <span>Download for macOS (.dmg) <span class="beta-tag">BETA</span></span>
+              <span class="sub">Apple Silicon · Free</span>
+            </a>
+          </div>
+          <p class="meta">Unsigned beta · one Terminal command to install (see below) · macOS 14+ · Apple Silicon</p>
+        </div>
       </div>
     </section>
 
@@ -226,35 +237,75 @@
     <section id="download" class="download">
       <div class="wrap">
         <h2 class="section-title">Get started with ClipShot</h2>
-        <p class="section-sub">Install directly on Windows 10/11.</p>
-        <div class="cta">
-          <a class="btn btn-primary btn-col" href="https://apps.microsoft.com/detail/9PPDRC62BRP4?hl=en-us&amp;gl=US" target="_blank" rel="noopener">
-            <span>Get it from Microsoft Store</span>
-            <span class="sub">Safe · Free</span>
-          </a>
-          <a class="btn btn-secondary btn-col" href="/downloads/ClipShot_1.3.0_x64-setup.exe" download>
-            <span>Direct download (.exe)</span>
-            <span class="sub">No account needed</span>
-          </a>
+        <p class="section-sub" id="dlSub">Install directly on Windows 10/11.</p>
+
+        <!-- Windows -->
+        <div class="os-block os-win" id="dl-windows">
+          <div class="cta">
+            <a class="btn btn-primary btn-col" href="https://apps.microsoft.com/detail/9PPDRC62BRP4?hl=en-us&amp;gl=US" target="_blank" rel="noopener">
+              <span>Get it from Microsoft Store</span>
+              <span class="sub">Safe · Free</span>
+            </a>
+            <a class="btn btn-secondary btn-col" href="/downloads/ClipShot_1.3.0_x64-setup.exe" download>
+              <span>Direct download (.exe)</span>
+              <span class="sub">No account needed</span>
+            </a>
+          </div>
+          <p class="note">If Windows shows a warning when running the direct download (.exe), click <strong>More info → Run anyway</strong>. Installing from the Microsoft Store shows no warning.</p>
+          <p class="sysreq">Windows 10 (1809) or later · 64-bit</p>
+          <button type="button" class="os-switch" data-os="mac">Download for macOS →</button>
         </div>
-        <p class="note">If Windows shows a warning when running the direct download (.exe), click <strong>More info → Run anyway</strong>. Installing from the Microsoft Store shows no warning.</p>
-        <p class="sysreq">Windows 10 (1809) or later · 64-bit</p>
-        <div class="mac-tease-wrap">
-          <span class="mac-tease"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>macOS support is under consideration.</span>
+
+        <!-- macOS (Beta) -->
+        <div class="os-block os-mac" id="dl-mac" hidden>
+          <div class="cta">
+            <a class="btn btn-primary btn-col" href="/downloads/ClipShot_1.3.0_aarch64.dmg" download>
+              <span>Download for macOS (.dmg) <span class="beta-tag">BETA</span></span>
+              <span class="sub">Apple Silicon · Free</span>
+            </a>
+          </div>
+          <div class="mac-guide">
+            <p class="note"><strong>Unsigned beta</strong> — on first launch macOS shows <strong>"is damaged and can't be opened"</strong>. The app is fine; it's just not Apple-notarized yet. Clear it once with these steps:</p>
+            <ol class="mac-steps">
+              <li>Open <code>ClipShot_1.3.0_aarch64.dmg</code> and <strong>drag ClipShot to "Applications"</strong>.</li>
+              <li>Launch it; when the "damaged" warning appears, click <strong>Cancel</strong>.</li>
+              <li>Open <strong>Terminal</strong> (Spotlight <kbd>⌘ Space</kbd> → "Terminal") and paste this one line:</li>
+            </ol>
+            <code class="cmd">xattr -dr com.apple.quarantine "/Applications/ClipShot.app"</code>
+            <p class="note">Now <strong>double-click ClipShot in Applications</strong> — it opens normally. Grant <strong>Screen Recording</strong> permission once on your first capture.</p>
+          </div>
+          <p class="sysreq">macOS 14 (Sonoma) or later · Apple Silicon (M1+)</p>
+          <button type="button" class="os-switch" data-os="windows">Download for Windows →</button>
         </div>
-        <p class="os-note" id="osNote" hidden>ClipShot is currently <strong>Windows 10/11 only</strong>. macOS support is under consideration.</p>
       </div>
     </section>
   </main>
 
   <script>
-    // Show a Windows-only note to non-Windows visitors (OS detection). Download stays visible.
+    // Detect the visitor's OS → show that platform (hero + download); switch button for the other.
     (function () {
       var ua = navigator.userAgent || '';
-      var isWindows = /Windows|Win64|Win32|WOW64/i.test(ua);
-      if (!isWindows) {
-        var n = document.getElementById('osNote');
-        if (n) n.hidden = false;
+      var isMac = /Mac/i.test(ua) && !/iPhone|iPad|iPod/i.test(ua);
+      var sub = document.getElementById('dlSub');
+      function toggle(sel, on) {
+        var els = document.querySelectorAll(sel);
+        for (var i = 0; i < els.length; i++) els[i].hidden = !on;
+      }
+      function show(os) {
+        var onMac = os === 'mac';
+        toggle('.os-win', !onMac);
+        toggle('.os-mac', onMac);
+        if (sub) sub.textContent = onMac
+          ? 'macOS 14+ · Apple Silicon. Install in seconds.'
+          : 'Install directly on Windows 10/11.';
+      }
+      show(isMac ? 'mac' : 'windows');
+      var btns = document.querySelectorAll('.os-switch');
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener('click', function () {
+          show(this.getAttribute('data-os'));
+          document.getElementById('download').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
       }
     })();
   </script>
