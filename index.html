@@ -45,13 +45,24 @@
         </picture>
         <h1><span class="accent">캡처</span>는 시작일 뿐입니다.</h1>
         <p class="lead">화면을 캡처하고, 바로 편집하고, 보관함에서 다시 찾으세요.</p>
-        <div class="cta">
-          <a class="btn btn-primary btn-col" href="https://apps.microsoft.com/detail/9PPDRC62BRP4?hl=ko-kr&amp;gl=KR" target="_blank" rel="noopener">
-            <span>Microsoft Store에서 받기</span>
-            <span class="sub">안전 · 무료</span>
-          </a>
+        <div class="os-win">
+          <div class="cta">
+            <a class="btn btn-primary btn-col" href="https://apps.microsoft.com/detail/9PPDRC62BRP4?hl=ko-kr&amp;gl=KR" target="_blank" rel="noopener">
+              <span>Microsoft Store에서 받기</span>
+              <span class="sub">안전 · 무료</span>
+            </a>
+          </div>
+          <p class="meta">Microsoft Store에서 안전하게 설치 · 자동 업데이트</p>
         </div>
-        <p class="meta">Microsoft Store에서 안전하게 설치 · 자동 업데이트</p>
+        <div class="os-mac" hidden>
+          <div class="cta">
+            <a class="btn btn-primary btn-col" href="/downloads/ClipShot_1.3.0_aarch64.dmg" download>
+              <span>macOS 다운로드 (.dmg) <span class="beta-tag">베타</span></span>
+              <span class="sub">Apple Silicon · 무료</span>
+            </a>
+          </div>
+          <p class="meta">처음 열 땐 우클릭 → 열기 · macOS 14+ · Apple Silicon</p>
+        </div>
       </div>
     </section>
 
@@ -229,7 +240,7 @@
         <p class="section-sub" id="dlSub">Windows 10/11에서 바로 설치할 수 있습니다.</p>
 
         <!-- Windows -->
-        <div class="os-block" id="dl-windows">
+        <div class="os-block os-win" id="dl-windows">
           <div class="cta">
             <a class="btn btn-primary btn-col" href="https://apps.microsoft.com/detail/9PPDRC62BRP4?hl=ko-kr&amp;gl=KR" target="_blank" rel="noopener">
               <span>Microsoft Store에서 받기</span>
@@ -245,7 +256,7 @@
           <button type="button" class="os-switch" data-os="mac">macOS용 다운로드 →</button>
         </div>
         <!-- macOS (베타) -->
-        <div class="os-block" id="dl-mac" hidden>
+        <div class="os-block os-mac" id="dl-mac" hidden>
           <div class="cta">
             <a class="btn btn-primary btn-col" href="/downloads/ClipShot_1.3.0_aarch64.dmg" download>
               <span>macOS 다운로드 (.dmg) <span class="beta-tag">베타</span></span>
@@ -261,17 +272,19 @@
   </main>
 
   <script>
-    // 방문자 OS 감지 → 해당 플랫폼 다운로드를 기본 노출(다른 OS는 전환 버튼으로 접근).
+    // 방문자 OS 감지 → 해당 플랫폼(히어로 + 다운로드) 노출, 반대 OS는 전환 버튼으로 접근.
     (function () {
       var ua = navigator.userAgent || '';
       var isMac = /Mac/i.test(ua) && !/iPhone|iPad|iPod/i.test(ua);
-      var win = document.getElementById('dl-windows');
-      var mac = document.getElementById('dl-mac');
       var sub = document.getElementById('dlSub');
+      function toggle(sel, on) {
+        var els = document.querySelectorAll(sel);
+        for (var i = 0; i < els.length; i++) els[i].hidden = !on;
+      }
       function show(os) {
         var onMac = os === 'mac';
-        if (win) win.hidden = onMac;
-        if (mac) mac.hidden = !onMac;
+        toggle('.os-win', !onMac);
+        toggle('.os-mac', onMac);
         if (sub) sub.textContent = onMac
           ? 'macOS 14 이상 · Apple Silicon에서 바로 설치할 수 있습니다.'
           : 'Windows 10/11에서 바로 설치할 수 있습니다.';

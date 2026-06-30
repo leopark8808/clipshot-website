@@ -45,13 +45,24 @@
         </picture>
         <h1><span class="accent">Capture</span> is just the beginning.</h1>
         <p class="lead">Capture your screen, edit on the spot, and find it again in your library.</p>
-        <div class="cta">
-          <a class="btn btn-primary btn-col" href="https://apps.microsoft.com/detail/9PPDRC62BRP4?hl=en-us&amp;gl=US" target="_blank" rel="noopener">
-            <span>Get it from Microsoft Store</span>
-            <span class="sub">Safe · Free</span>
-          </a>
+        <div class="os-win">
+          <div class="cta">
+            <a class="btn btn-primary btn-col" href="https://apps.microsoft.com/detail/9PPDRC62BRP4?hl=en-us&amp;gl=US" target="_blank" rel="noopener">
+              <span>Get it from Microsoft Store</span>
+              <span class="sub">Safe · Free</span>
+            </a>
+          </div>
+          <p class="meta">Safely install from Microsoft Store · Automatic updates</p>
         </div>
-        <p class="meta">Safely install from Microsoft Store · Automatic updates</p>
+        <div class="os-mac" hidden>
+          <div class="cta">
+            <a class="btn btn-primary btn-col" href="/downloads/ClipShot_1.3.0_aarch64.dmg" download>
+              <span>Download for macOS (.dmg) <span class="beta-tag">BETA</span></span>
+              <span class="sub">Apple Silicon · Free</span>
+            </a>
+          </div>
+          <p class="meta">First launch: right-click → Open · macOS 14+ · Apple Silicon</p>
+        </div>
       </div>
     </section>
 
@@ -229,7 +240,7 @@
         <p class="section-sub" id="dlSub">Install directly on Windows 10/11.</p>
 
         <!-- Windows -->
-        <div class="os-block" id="dl-windows">
+        <div class="os-block os-win" id="dl-windows">
           <div class="cta">
             <a class="btn btn-primary btn-col" href="https://apps.microsoft.com/detail/9PPDRC62BRP4?hl=en-us&amp;gl=US" target="_blank" rel="noopener">
               <span>Get it from Microsoft Store</span>
@@ -246,7 +257,7 @@
         </div>
 
         <!-- macOS (Beta) -->
-        <div class="os-block" id="dl-mac" hidden>
+        <div class="os-block os-mac" id="dl-mac" hidden>
           <div class="cta">
             <a class="btn btn-primary btn-col" href="/downloads/ClipShot_1.3.0_aarch64.dmg" download>
               <span>Download for macOS (.dmg) <span class="beta-tag">BETA</span></span>
@@ -262,17 +273,19 @@
   </main>
 
   <script>
-    // Detect the visitor's OS → show that platform's download by default (switch button for the other).
+    // Detect the visitor's OS → show that platform (hero + download); switch button for the other.
     (function () {
       var ua = navigator.userAgent || '';
       var isMac = /Mac/i.test(ua) && !/iPhone|iPad|iPod/i.test(ua);
-      var win = document.getElementById('dl-windows');
-      var mac = document.getElementById('dl-mac');
       var sub = document.getElementById('dlSub');
+      function toggle(sel, on) {
+        var els = document.querySelectorAll(sel);
+        for (var i = 0; i < els.length; i++) els[i].hidden = !on;
+      }
       function show(os) {
         var onMac = os === 'mac';
-        if (win) win.hidden = onMac;
-        if (mac) mac.hidden = !onMac;
+        toggle('.os-win', !onMac);
+        toggle('.os-mac', onMac);
         if (sub) sub.textContent = onMac
           ? 'macOS 14+ · Apple Silicon. Install in seconds.'
           : 'Install directly on Windows 10/11.';

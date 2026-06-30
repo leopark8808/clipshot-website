@@ -149,6 +149,7 @@ section { padding: 56px 0; }
 }
 .mac-tease-wrap { text-align: center; }
 /* OS 분기 다운로드 */
+[hidden] { display: none !important; }
 .os-block { text-align: center; }
 .os-switch {
   display: inline-flex; align-items: center; gap: 6px;
