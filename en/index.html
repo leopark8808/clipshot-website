@@ -270,7 +270,10 @@
               <li>Open <code>ClipShot_1.3.0_aarch64.dmg</code> and <strong>drag ClipShot to "Applications"</strong>.</li>
               <li>In <strong>Terminal</strong> (Spotlight <kbd>⌘ Space</kbd> → "Terminal"), paste this one line:</li>
             </ol>
-            <code class="cmd">xattr -dr com.apple.quarantine "/Applications/ClipShot.app"</code>
+            <div class="cmd-row">
+              <code class="cmd">xattr -dr com.apple.quarantine "/Applications/ClipShot.app"</code>
+              <button type="button" class="cmd-copy" data-copied="Copied!">Copy</button>
+            </div>
             <p class="note">Now <strong>double-click ClipShot in Applications</strong> — it opens normally. Grant <strong>Screen Recording</strong> permission once on your first capture.</p>
           </div>
           <p class="sysreq">macOS 14 (Sonoma) or later · Apple Silicon (M1+)</p>
@@ -305,6 +308,25 @@
           show(this.getAttribute('data-os'));
           document.getElementById('download').scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
+      }
+    })();
+
+    // Copy-command button
+    (function () {
+      var btns = document.querySelectorAll('.cmd-copy');
+      for (var i = 0; i < btns.length; i++) {
+        (function (b) {
+          var orig = b.textContent;
+          b.addEventListener('click', function () {
+            var cmd = b.parentElement.querySelector('.cmd');
+            if (!cmd || !navigator.clipboard) return;
+            navigator.clipboard.writeText(cmd.textContent.trim()).then(function () {
+              b.textContent = b.getAttribute('data-copied') || 'OK';
+              b.classList.add('copied');
+              setTimeout(function () { b.textContent = orig; b.classList.remove('copied'); }, 1500);
+            }).catch(function () {});
+          });
+        })(btns[i]);
       }
     })();
   </script>

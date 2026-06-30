@@ -269,7 +269,10 @@
               <li>받은 <code>ClipShot_1.3.0_aarch64.dmg</code> 를 열고 <strong>ClipShot 을 “응용 프로그램”으로 드래그</strong>.</li>
               <li><strong>터미널</strong>(Spotlight <kbd>⌘ Space</kbd> → “터미널”)에 아래 한 줄을 붙여넣어 실행:</li>
             </ol>
-            <code class="cmd">xattr -dr com.apple.quarantine "/Applications/ClipShot.app"</code>
+            <div class="cmd-row">
+              <code class="cmd">xattr -dr com.apple.quarantine "/Applications/ClipShot.app"</code>
+              <button type="button" class="cmd-copy" data-copied="복사됨!">복사</button>
+            </div>
             <p class="note">이제 <strong>응용 프로그램에서 ClipShot 더블클릭</strong> → 정상 실행. 첫 캡처 때 <strong>화면 기록 권한</strong> 한 번 허용하면 끝.</p>
           </div>
           <p class="sysreq">macOS 14 (Sonoma) 이상 · Apple Silicon (M1 이상)</p>
@@ -304,6 +307,25 @@
           show(this.getAttribute('data-os'));
           document.getElementById('download').scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
+      }
+    })();
+
+    // 명령어 복사 버튼
+    (function () {
+      var btns = document.querySelectorAll('.cmd-copy');
+      for (var i = 0; i < btns.length; i++) {
+        (function (b) {
+          var orig = b.textContent;
+          b.addEventListener('click', function () {
+            var cmd = b.parentElement.querySelector('.cmd');
+            if (!cmd || !navigator.clipboard) return;
+            navigator.clipboard.writeText(cmd.textContent.trim()).then(function () {
+              b.textContent = b.getAttribute('data-copied') || 'OK';
+              b.classList.add('copied');
+              setTimeout(function () { b.textContent = orig; b.classList.remove('copied'); }, 1500);
+            }).catch(function () {});
+          });
+        })(btns[i]);
       }
     })();
   </script>

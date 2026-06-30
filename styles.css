@@ -181,6 +181,16 @@ section { padding: 56px 0; }
   background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
   -webkit-user-select: all; user-select: all;
 }
+.cmd-row { display: flex; align-items: stretch; gap: 8px; max-width: 560px; margin: 12px auto; }
+.cmd-row .cmd { flex: 1; min-width: 0; margin: 0; }
+.cmd-copy {
+  flex-shrink: 0; padding: 0 16px; border-radius: 8px; cursor: pointer;
+  font: inherit; font-size: 0.82rem; font-weight: 600; white-space: nowrap;
+  background: var(--accent); color: var(--accent-fg); border: 1px solid var(--accent);
+  transition: filter .12s, background .12s, color .12s;
+}
+.cmd-copy:hover { filter: brightness(1.06); }
+.cmd-copy.copied { background: var(--surface); color: var(--accent); border-color: var(--accent); }
 code:not(.cmd) {
   font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-size: 0.86em;
   background: var(--surface); border: 1px solid var(--border); border-radius: 5px; padding: 1px 5px;
