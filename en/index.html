@@ -51,13 +51,13 @@
               <span>Get it from Microsoft Store</span>
               <span class="sub">Safe · Free</span>
             </a>
-            <a class="btn btn-secondary btn-col" href="/downloads/ClipShot_1.4.0_x64-setup.exe" download>
+            <a class="btn btn-secondary btn-col exe-only" href="/downloads/ClipShot_1.4.0_x64-setup.exe" download>
               <span>Direct download (.exe)</span>
               <span class="sub">No account needed</span>
             </a>
           </div>
           <p class="meta">Safely install from Microsoft Store · Automatic updates</p>
-          <p class="meta">If Windows shows a warning when running the direct download (.exe), click <strong>More info → Run anyway</strong>.</p>
+          <p class="meta exe-only">If Windows shows a warning when running the direct download (.exe), click <strong>More info → Run anyway</strong>.</p>
         </div>
         <div class="os-mac" hidden>
           <div class="cta">
@@ -247,12 +247,12 @@
               <span>Get it from Microsoft Store</span>
               <span class="sub">Safe · Free</span>
             </a>
-            <a class="btn btn-secondary btn-col" href="/downloads/ClipShot_1.4.0_x64-setup.exe" download>
+            <a class="btn btn-secondary btn-col exe-only" href="/downloads/ClipShot_1.4.0_x64-setup.exe" download>
               <span>Direct download (.exe)</span>
               <span class="sub">No account needed</span>
             </a>
           </div>
-          <p class="note">If Windows shows a warning when running the direct download (.exe), click <strong>More info → Run anyway</strong>.</p>
+          <p class="note exe-only">If Windows shows a warning when running the direct download (.exe), click <strong>More info → Run anyway</strong>.</p>
           <p class="sysreq">Windows 10 (1809) or later · 64-bit</p>
           <button type="button" class="os-switch" data-os="mac">Download for macOS →</button>
         </div>
@@ -289,6 +289,8 @@
     (function () {
       var ua = navigator.userAgent || '';
       var isMac = /Mac/i.test(ua) && !/iPhone|iPad|iPod/i.test(ua);
+      // On mobile the direct .exe download is useless → hide related button and note
+      if (/Android|iPhone|iPad|iPod|Windows Phone/i.test(ua)) document.documentElement.className += ' is-mobile';
       var sub = document.getElementById('dlSub');
       function toggle(sel, on) {
         var els = document.querySelectorAll(sel);

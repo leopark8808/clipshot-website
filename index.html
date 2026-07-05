@@ -51,13 +51,13 @@
               <span>Microsoft Store에서 받기</span>
               <span class="sub">안전 · 무료</span>
             </a>
-            <a class="btn btn-secondary btn-col" href="/downloads/ClipShot_1.4.0_x64-setup.exe" download>
+            <a class="btn btn-secondary btn-col exe-only" href="/downloads/ClipShot_1.4.0_x64-setup.exe" download>
               <span>직접 다운로드 (.exe)</span>
               <span class="sub">계정 없이 설치</span>
             </a>
           </div>
           <p class="meta">Microsoft Store에서 안전하게 설치 · 자동 업데이트</p>
-          <p class="meta">직접 다운로드(.exe) 실행 시 Windows 경고가 나오면 <strong>추가 정보 → 실행</strong>을 눌러주세요.</p>
+          <p class="meta exe-only">직접 다운로드(.exe) 실행 시 Windows 경고가 나오면 <strong>추가 정보 → 실행</strong>을 눌러주세요.</p>
         </div>
         <div class="os-mac" hidden>
           <div class="cta">
@@ -247,12 +247,12 @@
               <span>Microsoft Store에서 받기</span>
               <span class="sub">안전 · 무료</span>
             </a>
-            <a class="btn btn-secondary btn-col" href="/downloads/ClipShot_1.4.0_x64-setup.exe" download>
+            <a class="btn btn-secondary btn-col exe-only" href="/downloads/ClipShot_1.4.0_x64-setup.exe" download>
               <span>직접 다운로드 (.exe)</span>
               <span class="sub">계정 없이 설치</span>
             </a>
           </div>
-          <p class="note">직접 다운로드(.exe) 실행 시 Windows 경고가 나오면 <strong>추가 정보 → 실행</strong>을 눌러주세요.</p>
+          <p class="note exe-only">직접 다운로드(.exe) 실행 시 Windows 경고가 나오면 <strong>추가 정보 → 실행</strong>을 눌러주세요.</p>
           <p class="sysreq">Windows 10 (1809) 이상 · 64비트</p>
           <button type="button" class="os-switch" data-os="mac">macOS용 다운로드 →</button>
         </div>
@@ -288,6 +288,8 @@
     (function () {
       var ua = navigator.userAgent || '';
       var isMac = /Mac/i.test(ua) && !/iPhone|iPad|iPod/i.test(ua);
+      // 모바일에선 exe 직접 다운로드가 무의미 → 관련 버튼·안내 숨김
+      if (/Android|iPhone|iPad|iPod|Windows Phone/i.test(ua)) document.documentElement.className += ' is-mobile';
       var sub = document.getElementById('dlSub');
       function toggle(sel, on) {
         var els = document.querySelectorAll(sel);
