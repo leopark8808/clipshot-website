@@ -51,23 +51,24 @@
               <span>Get it from Microsoft Store</span>
               <span class="sub">Safe · Free</span>
             </a>
-            <a class="btn btn-secondary btn-col exe-only" href="/downloads/ClipShot_1.4.0_x64-setup.exe" download>
+            <a class="btn btn-secondary btn-col pc-only" href="/downloads/ClipShot_1.4.0_x64-setup.exe" download>
               <span>Direct download (.exe)</span>
               <span class="sub">No account needed</span>
             </a>
           </div>
           <p class="meta">Safely install from Microsoft Store · Automatic updates</p>
-          <p class="meta exe-only">If Windows shows a warning when running the direct download (.exe), click <strong>More info → Run anyway</strong>.</p>
+          <p class="meta pc-only">If Windows shows a warning when running the direct download (.exe), click <strong>More info → Run anyway</strong>.</p>
         </div>
         <div class="os-mac" hidden>
           <div class="cta">
-            <a class="btn btn-primary btn-col" href="/downloads/ClipShot_1.3.0_aarch64.dmg" download>
+            <a class="btn btn-primary btn-col pc-only" href="/downloads/ClipShot_1.3.0_aarch64.dmg" download>
               <span>Download for macOS (.dmg) <span class="beta-tag">BETA</span></span>
               <span class="sub">Apple Silicon · Free</span>
             </a>
           </div>
-          <p class="meta">Unsigned beta · one Terminal command to install (<a href="#mac-guide">install guide ↓</a>) · macOS 14+ · Apple Silicon</p>
+          <p class="meta pc-only">Unsigned beta · one Terminal command to install (<a href="#mac-guide">install guide ↓</a>) · macOS 14+ · Apple Silicon</p>
         </div>
+        <p class="meta mobile-only">ClipShot is a PC-only app. Open this page on your PC (Windows·macOS) to install.</p>
       </div>
     </section>
 
@@ -239,6 +240,7 @@
       <div class="wrap">
         <h2 class="section-title">Get started with ClipShot</h2>
         <p class="section-sub" id="dlSub">Install directly on Windows 10/11.</p>
+        <p class="note mobile-only">ClipShot is a PC-only app. Open this page on your PC (Windows·macOS) to install.</p>
 
         <!-- Windows -->
         <div class="os-block os-win" id="dl-windows">
@@ -247,12 +249,12 @@
               <span>Get it from Microsoft Store</span>
               <span class="sub">Safe · Free</span>
             </a>
-            <a class="btn btn-secondary btn-col exe-only" href="/downloads/ClipShot_1.4.0_x64-setup.exe" download>
+            <a class="btn btn-secondary btn-col pc-only" href="/downloads/ClipShot_1.4.0_x64-setup.exe" download>
               <span>Direct download (.exe)</span>
               <span class="sub">No account needed</span>
             </a>
           </div>
-          <p class="note exe-only">If Windows shows a warning when running the direct download (.exe), click <strong>More info → Run anyway</strong>.</p>
+          <p class="note pc-only">If Windows shows a warning when running the direct download (.exe), click <strong>More info → Run anyway</strong>.</p>
           <p class="sysreq">Windows 10 (1809) or later · 64-bit</p>
           <button type="button" class="os-switch" data-os="mac">Download for macOS →</button>
         </div>
@@ -260,12 +262,12 @@
         <!-- macOS (Beta) -->
         <div class="os-block os-mac" id="dl-mac" hidden>
           <div class="cta">
-            <a class="btn btn-primary btn-col" href="/downloads/ClipShot_1.3.0_aarch64.dmg" download>
+            <a class="btn btn-primary btn-col pc-only" href="/downloads/ClipShot_1.3.0_aarch64.dmg" download>
               <span>Download for macOS (.dmg) <span class="beta-tag">BETA</span></span>
               <span class="sub">Apple Silicon · Free</span>
             </a>
           </div>
-          <div class="mac-guide" id="mac-guide">
+          <div class="mac-guide pc-only" id="mac-guide">
             <p class="note"><strong>Unsigned beta</strong> — double-clicking shows <strong>"is damaged and can't be opened"</strong>. The app is fine; it's just not Apple-notarized yet. Just <strong>2 steps</strong>:</p>
             <ol class="mac-steps">
               <li>Open <code>ClipShot_1.3.0_aarch64.dmg</code> and <strong>drag ClipShot to "Applications"</strong>.</li>
@@ -289,8 +291,9 @@
     (function () {
       var ua = navigator.userAgent || '';
       var isMac = /Mac/i.test(ua) && !/iPhone|iPad|iPod/i.test(ua);
-      // On mobile the direct .exe download is useless → hide related button and note
-      if (/Android|iPhone|iPad|iPod|Windows Phone/i.test(ua)) document.documentElement.className += ' is-mobile';
+      // On mobile installers are useless → hide download buttons/notes, show the PC-only notice
+      // (modern iPads report a Mac UA, so use touch points to tell them apart)
+      if (/Android|iPhone|iPad|iPod|Windows Phone/i.test(ua) || (/Mac/i.test(ua) && navigator.maxTouchPoints > 1)) document.documentElement.className += ' is-mobile';
       var sub = document.getElementById('dlSub');
       function toggle(sel, on) {
         var els = document.querySelectorAll(sel);

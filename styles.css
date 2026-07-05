@@ -81,7 +81,9 @@ header {
 .hero .cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 36px; }
 .hero .meta { margin-top: 20px; font-size: 0.88rem; color: var(--fg-soft); }
 .hero .meta + .meta { margin-top: 6px; }
-html.is-mobile .exe-only { display: none; }
+html.is-mobile .pc-only { display: none; }
+.mobile-only { display: none; }
+html.is-mobile .mobile-only { display: block; }
 
 /* ── 섹션 ── */
 section { padding: 56px 0; }
