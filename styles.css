@@ -83,7 +83,18 @@ header {
 .hero .meta + .meta { margin-top: 6px; }
 html.is-mobile .pc-only { display: none; }
 .mobile-only { display: none; }
-html.is-mobile .mobile-only { display: block; }
+html.is-mobile .mobile-only {
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+  border-radius: 12px;
+  padding: 10px 18px;
+  font-weight: 600;
+}
 
 /* ── 섹션 ── */
 section { padding: 56px 0; }
