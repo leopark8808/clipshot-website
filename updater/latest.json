@@ -1,12 +1,12 @@
 {
   "_note": "B-10 자체 업데이터 피드(tauri-plugin-updater). exe(NSIS) 채널 전용. 매 릴리스마다 version·signature·url·pub_date 를 새 빌드 값으로 교체 후 배포. signature = `pnpm tauri build` 가 생성한 `ClipShot_<ver>_x64-setup.exe.sig` 파일의 내용 전체. (이 _note 필드는 Tauri 가 무시함.)",
-  "version": "1.3.0",
-  "notes": "편집 없이 즉시 저장 옵션을 추가하고, 메인 창 크기 조절(Windows)을 지원합니다.",
-  "pub_date": "2026-06-29T16:20:07Z",
+  "version": "1.4.0",
+  "notes": "Shift 반듯하게 그리기, 도구별 마지막 설정 기억, 녹화 패널 새 디자인, 녹화 소리·화면 싱크 어긋남 수정.",
+  "pub_date": "2026-07-05T01:58:54Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSM25ZODQ1b0JYaDJqWXV0V2ViNDI2SUY3VVFwRWtJSW4wbXM0SGd3NWhwVTk5MWlicHhNU2JRYUcxcFdIL3hQeFVEMjZYdlR2MkMxWTMrMk9sL0IrSUliZGFLc1NpYmdFPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzgyNzQ5OTc5CWZpbGU6Q2xpcFNob3RfMS4zLjBfeDY0LXNldHVwLmV4ZQpMZ2RpVlliYzVOREozdUhUbFlXQ1VKK1lrY0NRZERrTVZsQ2hEenI5eHJoS1pFdlBRVkZDb1ArY3BqUE8yYmZhbUVLS1greCtYSFRRRjRLVHBkbmlCQT09Cg==",
-      "url": "https://clipshot-website.pages.dev/downloads/ClipShot_1.3.0_x64-setup.exe"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSM25ZODQ1b0JYaC9qVW1YS0JDQi9sOWNIUHFtOUFpQlY0OW83bXRqOHBVdTNoQ3VUT1hyRWtRckR5RmR6bGJ5Tkx2bGVUMFZGbFdOWkE1SUtPbjRuMDVUR0lGRXdSWFFrPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzgzMjE2NzEzCWZpbGU6Q2xpcFNob3RfMS40LjBfeDY0LXNldHVwLmV4ZQpSMUNld0lXUytxZXNRRkE4YTZVME95dmptT0k0MHJlT3UyZmRROUt1YnJNKzlVTWZTVWJ3VGdwaUtoZ05ueDJSNm1yM3Vzb3hrOTRXdXE1eG1tUDRCdz09Cg==",
+      "url": "https://clipshot-website.pages.dev/downloads/ClipShot_1.4.0_x64-setup.exe"
     }
   }
 }
