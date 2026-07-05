@@ -22,6 +22,16 @@ version.json           # ← 버전 단일 소스 (아래)
 sitemap.xml · robots.txt · _headers
 ```
 
+## 다운로드 UI 구조 (2026-07-05)
+
+다운로드 버튼은 **히어로 + 다운로드 섹션 두 곳**에 있다(ko/en 동일). OS·기기별 노출은 각 페이지 인라인 스크립트의 UA 감지가 담당한다:
+
+- **OS 분기**: `.os-win` / `.os-mac` 블록을 UA로 토글(반대 OS는 다운로드 섹션의 전환 버튼으로 접근).
+- **모바일 처리**: Android/iPhone/iPad UA 또는 "Mac UA + 멀티터치"(최신 아이패드)면 `<html>`에 `is-mobile` 클래스 부여 →
+  - `.pc-only` 요소 숨김 = 직접 다운로드 exe 버튼·SmartScreen 경고 안내, macOS dmg 버튼·터미널 설치 가이드 (Store 버튼은 모바일에도 노출)
+  - `.mobile-only` 요소 노출 = "ClipShot은 PC 전용 앱" 라운드 배지 안내(히어로·다운로드 섹션 각 1곳)
+- **유지보수 규칙**: 설치 파일 다운로드 버튼·설치 안내를 새로 추가하면 `pc-only` 클래스를 같이 달아야 모바일에서 숨겨진다. exe 버전업 시 직접다운로드 href 는 **히어로+다운로드 섹션 × ko/en = 4곳** 전부 갱신(`grep -r "x64-setup.exe" index.html en/index.html`).
+
 ## 버전 갱신
 
 푸터의 버전 표기는 런타임에 `/version.json`을 fetch 해 자동 반영된다(각 페이지 인라인 스크립트). 앱이 새 버전으로 Store 에 게시되면 **두 곳**을 같은 버전으로 갱신한다:
