@@ -1,12 +1,12 @@
 {
   "_note": "B-10 자체 업데이터 피드(tauri-plugin-updater). exe(NSIS) 채널 전용. 매 릴리스마다 version·signature·url·pub_date 를 새 빌드 값으로 교체 후 배포. signature = `pnpm tauri build` 가 생성한 `ClipShot_<ver>_x64-setup.exe.sig` 파일의 내용 전체. (이 _note 필드는 Tauri 가 무시함.)",
-  "version": "1.5.1",
-  "notes": "앱 실행 후 첫 스크롤 캡처에서 스크롤 영역이 인식되지 않던 문제를 수정했습니다.",
-  "pub_date": "2026-07-11T02:33:00Z",
+  "version": "1.5.2",
+  "notes": "일부 PC에서 영역 캡처 선택 화면이 검게 표시되어 영역을 선택할 수 없던 문제를 수정했습니다.",
+  "pub_date": "2026-08-08T10:49:37Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSM25ZODQ1b0JYaDV0b1ZrV0JBaGFwM1NndEJYNmEySC9HNUVqNGtEaDdvdndsSWM3cS9MOFNTTFVBNytVaGRnS1FSOFgrOFlraC9ZbjNlNzgvL0tiUUl1ODQ0eEVwRndjPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzgzNzM3MTUzCWZpbGU6Q2xpcFNob3RfMS41LjFfeDY0LXNldHVwLmV4ZQp4MXFQUFJpdFNVSVF0S3RjcmNyOEpWcy9mTkZYMW1VZzUrRTF0K1piRjlwS2FSM21hWWF6OHJuMHNnZDFCOENBcmFKa2Y0S1JLM083SVJxT3d0TC9Ddz09Cg==",
-      "url": "https://clipshot-website.pages.dev/downloads/ClipShot_1.5.1_x64-setup.exe"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSM25ZODQ1b0JYaDJUamREaHZGaDN0NzZ4TEMwL3VrcEgrYVREb1ZJdG9kdVQwNFdrNnRTOFVmUnBqekNSNlJyVU5MRC9jUXVDZGVFY0poQzlGYUVmbExpcmt5UHdTcUFvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg2MTg1MDM1CWZpbGU6Q2xpcFNob3RfMS41LjJfeDY0LXNldHVwLmV4ZQpyVnN0c2h1TGgwM01pMlNKd045TUM4bWdmZ2RadHE0VFlXUlkyMWZ5VVU3U1Bucnd1czNzNmtEbmFEcmZrbG9QUEp4UjJ5dmxNK0JzNVJQa2M4ME5CUT09Cg==",
+      "url": "https://clipshot-website.pages.dev/downloads/ClipShot_1.5.2_x64-setup.exe"
     }
   }
 }
