@@ -1,12 +1,12 @@
 {
   "_note": "B-10 자체 업데이터 피드(tauri-plugin-updater). exe(NSIS) 채널 전용. 매 릴리스마다 version·signature·url·pub_date 를 새 빌드 값으로 교체 후 배포. signature = `pnpm tauri build` 가 생성한 `ClipShot_<ver>_x64-setup.exe.sig` 파일의 내용 전체. (이 _note 필드는 Tauri 가 무시함.)",
-  "version": "1.6.0",
-  "notes": "영역 캡처에서 마우스를 올리면 창·버튼·이미지 영역을 자동으로 찾아 클릭 한 번으로 캡처할 수 있습니다. 새 버전이 있으면 메인 화면에 업데이트 배너가 표시됩니다.",
-  "pub_date": "2026-09-12T16:08:09Z",
+  "version": "1.7.0",
+  "notes": "캡처할 영역의 비율을 자유 / 16:9 / 1:1 / 9:16 중에서 고정할 수 있습니다. 영역을 잡은 뒤에도 바꿀 수 있고, 화면 녹화에도 똑같이 적용됩니다.",
+  "pub_date": "2026-09-13T16:59:40Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSM25ZODQ1b0JYaCtYdGNKVmYxK1BJa3dxVlhoRWd5VXRiRnNQcFdUUENvMnF4ZUFiYjNaRVRzNXg2Rk9GSEIyUnpYWjM5U3M2aXBZN1hjQjhIMCtFSTlTUXBPSFZSYmdRPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg5MjI5MjYyCWZpbGU6Q2xpcFNob3RfMS42LjBfeDY0LXNldHVwLmV4ZQpCd0s5a2Q4NFVKTnpWN0phMk1xNldBYkRLNkxkdEF2N3VSQUdpZFFEenhMdjdpbXZPYkx6REhPLzRCUms4d0F2bml3aHh2VWxaSFYzNEdhTDhzeWNBQT09Cg==",
-      "url": "https://clipshot-website.pages.dev/downloads/ClipShot_1.6.0_x64-setup.exe"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSM25ZODQ1b0JYaHhXTDk1UXM4OXpsMlBNWmRFMjZhbWZtM0w2M2djVnhvSmVHSGcvajlEeDMwTndsZHo2VkhkOGU4cG5iR2RFWCtabjBHZkJYckQxekt1d2NUTGR2OEE4PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg5MzE4NDA5CWZpbGU6Q2xpcFNob3RfMS43LjBfeDY0LXNldHVwLmV4ZQpMeXdHRmRqRTVZZ2xpZGpWam40Vk5lUG5ScWpRc2NnZzRhd1lmOU5TWkNoS0lud2hBa0NKUHRvd3IxMkx2MkkzUTJ4NklmWXJndFBLRFpJZ2NOYUhCdz09Cg==",
+      "url": "https://clipshot-website.pages.dev/downloads/ClipShot_1.7.0_x64-setup.exe"
     }
   }
 }
